@@ -1,4 +1,4 @@
-# Hextra Starter Template
+# TSP Docs Built on Hextra (GoHugo)
 
 [![Deploy Hugo site to Pages](https://github.com/imfing/hextra-starter-template/actions/workflows/pages.yaml/badge.svg)](https://github.com/imfing/hextra-starter-template/actions/workflows/pages.yaml)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/6e83fd88-5ffe-4808-9689-c0f3b100bfe3/deploy-status)](https://app.netlify.com/sites/hextra-starter-template/deploys)
@@ -6,10 +6,6 @@
 
 
 🐣 Minimal template for getting started with [Hextra](https://github.com/imfing/hextra)
-
-![hextra-template](https://github.com/imfing/hextra-starter-template/assets/5097752/c403b9a9-a76c-47a6-8466-513d772ef0b7)
-
-[🌐 Demo ↗](https://imfing.github.io/hextra-starter-template/)
 
 ## Quick Start
 
