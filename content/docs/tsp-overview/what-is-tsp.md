@@ -12,14 +12,14 @@ weight: 1
 ## TSP Basic Profile
 * **Network Name:** TSP Mainnet
 * **Symbol:** TSP
-* **Chain ID:** 100
+* **Chain ID:** TBD
 * **RPC URL:** https://rpc.tsp.network
 * **Explorer:** https://explorer.tsp.network
-* **Testnet Name:** New York
-* **Testnet Symbol:** TSPt
-* **Testnet Chain ID:** 100
-* **Testnet RPC URL:** https://rpc.newyork.tsp.network
-* **Testnet Explorer:** https://explorer.newyork.tsp.network
+* **Testnet Name:** TSP Testnet
+* **Testnet Symbol:** TSP
+* **Testnet Chain ID:** 177777
+* **Testnet RPC URL:** https://rpc.testnet.tsp.network
+* **Testnet Explorer:** https://scan.tsp.network
 
 ## How to Use a MetaMask Wallet with TSP
 
@@ -30,7 +30,7 @@ weight: 1
     * New RPC URL: https://rpc.tsp.network
     * Chain ID: 100
     * Symbol: TSP
-    * Block Explorer URL: https://explorer.tsp.network
+    * Block Explorer URL: https://scan.tsp.network
 4. **Add TSP Tokens to Your Wallet:** You can acquire TSP tokens through exchanges or by participating in the network's staking program. Once you have TSP tokens, you can send them to your MetaMask wallet.
 
 ## How to Use TSP DApps

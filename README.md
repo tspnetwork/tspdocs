@@ -1,30 +1,29 @@
 # TSP Docs Built on Hextra (GoHugo)
 
 [![Deploy Hugo site to Pages](https://github.com/imfing/hextra-starter-template/actions/workflows/pages.yaml/badge.svg)](https://github.com/imfing/hextra-starter-template/actions/workflows/pages.yaml)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/6e83fd88-5ffe-4808-9689-c0f3b100bfe3/deploy-status)](https://app.netlify.com/sites/hextra-starter-template/deploys)
-![Vercel Deployment Status](https://img.shields.io/github/deployments/imfing/hextra-starter-template/production?logo=vercel&logoColor=white&label=vercel&labelColor=black&link=https%3A%2F%2Fhextra-starter-template.vercel.app%2F)
 
-
-🐣 Minimal template for getting started with [Hextra](https://github.com/imfing/hextra)
+🐣 Official TSP Network documentation 
 
 ## Quick Start
 
-Use this template to create your own repository:
+Make sure Go and GoHugo are installed on your machine, then
 
-<img src="https://docs.github.com/assets/cb-77734/mw-1440/images/help/repository/use-this-template-button.webp" width=400 />
+1. Git clone this repo to your local dir
+```
+git clone git@github.com:tspnetwork/tspdocs.git
+```
 
-You can also quickly start developing using the following online development environment:
+2. Run the local server to review the docs
+```
+cd tspdocs
+hugo serve
+```
 
-- [GitHub Codespaces](https://github.com/codespaces) 
-    
-    [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/imfing/hextra-starter-template)
-
-    Create a new codespace and follow the [Local Development](#local-development) to launch the preview
-
-- [Gitpod](https://gitpod.io)
-
-    [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/imfing/hextra-starter-template)
-
+3. Revise and commit to build the docs
+Once you're done reviewing or revising the docs, run the command below to release your edits,
+```
+git push origin main
+```
 
 ## Deployment
 
