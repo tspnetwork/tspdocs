@@ -8,9 +8,12 @@ sidebar:
 ---
 
 {{< cards >}}
-  {{< card link="design-overview" title="Design Overview" icon="document-duplicate" >}}
-  {{< card link="tsp-architecture" title="TSP Architecture" icon="adjustments" >}}
-  {{< card link="consensus-engine" title="Consensus Engine" icon="badge-check" >}}
-  {{< card link="block-explorer" title="TSP Block Explorer" icon="sparkles" >}}
+  {{< card link="/docs/protocol/tsp-architecture/" title="TSP Architecture" icon="template" >}}
+  {{< card link="/docs/protocol/tsp-cli/" title="TSP CLI" icon="terminal" >}}
+  {{< card link="/docs/protocol/concepts/" title="TSP Concepts" icon="light-bulb" >}}
+    {{< card link="/docs/protocol/modules/" title="Modules" icon="cube-transparent" >}}
+    {{< card link="/docs/protocol/ibc-channels/" title="IB Channels" icon="link" >}}
+    {{< card link="/docs/protocol/metrics/" title="Metrics" icon="chart-square-bar" >}}
+    {{< card link="/docs/protocol/faq/" title="FAQ" icon="question-mark-circle" >}}
 {{< /cards >}}
 

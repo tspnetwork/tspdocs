@@ -11,7 +11,7 @@ layout: hextra-home
 
 <div class="mt-6 mb-6">
 {{< hextra/hero-headline >}}
-  Build with Telegram Service Platform&nbsp;<br class="sm:block hidden" />Redefine social engagement
+  Build with Telegram Service Platform&nbsp;<br class="sm:block hidden" />Redefine Social Engagement
 
 {{< /hextra/hero-headline >}}
 </div>
