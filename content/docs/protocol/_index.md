@@ -1,10 +1,10 @@
 ---
-title: TSP Technology Overview
+title: TSP Protocol
 weight: 4
 prev: /docs/tsp-bot-system
-next: /docs/dapp-dev/
+next: /docs/develop/
 sidebar:
-  open: false
+  open: true
 ---
 
 {{< cards >}}
@@ -13,3 +13,4 @@ sidebar:
   {{< card link="consensus-engine" title="Consensus Engine" icon="badge-check" >}}
   {{< card link="block-explorer" title="TSP Block Explorer" icon="sparkles" >}}
 {{< /cards >}}
+

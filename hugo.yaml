@@ -31,14 +31,14 @@ menu:
     - name: Using TSP
       pageRef: /docs/using-tsp/
       weight: 2
-    - name: Docs
-      pageRef: /docs
+    - name: Protocol
+      pageRef: /docs/protocol/
       weight: 3
+    - name: Develop
+      pageRef: /docs/develop/
+      weight: 4
 #    - name: Blog
 #      pageRef: /blog
-#      weight: 2
-#    - name: Showases
-#      pageRef: /showcase
 #      weight: 2
     - name: Home ↗
       url: "https://tsp.network/"

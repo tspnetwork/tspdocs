@@ -1,7 +1,8 @@
 ---
 linkTitle: TSP APIs and SDKs
 title: TSP APIs and SDKs
-prev: /docs/dapp-dev/
+prev: /docs/develop/
+draft: true
 ---
 
 This section covers the full details of the APIs and SDKs offered by the TSP Network.

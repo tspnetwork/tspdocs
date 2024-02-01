@@ -1,7 +1,8 @@
 ---
-title: dApp Development
+title: Develop on TSP
+linkTitle: Develop on TSP
 weight: 5
-prev: /docs/tsp-tech-overview/
+prev: /docs/tsp-protocol/
 next: /docs/tsp-api/
 sidebar:
   open: false
