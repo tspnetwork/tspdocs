@@ -20,7 +20,6 @@ Learn about the different options supported.
   git clone -b v14.0.0 --single-branch https://github.com/tspnetwork/tspchain
   ```
   
-
 ## Pebble DB
 
 Currently, the supported database backends on the [cometbft-db](https://github.com/cometbft/cometbft-db) dependency
@@ -218,14 +217,9 @@ db_backend = "rocksdb"
 
 ## Version DB & MemIAVL
 
-note
-
-The TSP team carried out an [analysis to compare the performance of a 5-node network with LevelDB vs VersionDB + MemIAVL](https://www.notion.so/altiplanic/LevelDB-vs-MemIAVL-VersionDB-2034a05c7e1646369d034eb423a25279?pvs=4).
-The results of the analysis show that even though MemIAVL offers
-a performance boost for state-sync and fast-sync processes,
-it takes a toll on the resources required for the node.
-Additionally, the block processing time is higher,
-which enhances the chances of missing blocks in validator nodes.
+{{< callout type="warning" >}}
+The TSP team carried out an [analysis to compare the performance of a 5-node network with LevelDB vs VersionDB + MemIAVL](https://www.notion.so/altiplanic/LevelDB-vs-MemIAVL-VersionDB-2034a05c7e1646369d034eb423a25279?pvs=4). The results of the analysis show that even though MemIAVL offers a performance boost for state-sync and fast-sync processes, it takes a toll on the resources required for the node. Additionally, the block processing time is higher, which enhances the chances of missing blocks in validator nodes.
+{{< /callout >}}
 
 ### Version DB
 
@@ -276,7 +270,27 @@ If you need to support very old merkle proof generations, don't use memIAVL.
 The default MemIAVL section in `app.toml`:
 
 ```
-[memiavl]# Enable defines if the memiavl should be enabled.enable = false# ZeroCopy defines if the memiavl should return slices pointing to mmap-ed buffers directly (zero-copy),# the zero-copied slices must not be retained beyond current block's execution.zero-copy = false# AsyncCommitBuffer defines the size of asynchronous commit queue, this greatly improve block catching-up# performance, -1 means synchronous commit.async-commit-buffer = 0# SnapshotKeepRecent defines what many old snapshots (excluding the latest one) to keep after new snapshots are taken.snapshot-keep-recent = 0# SnapshotInterval defines the block interval the memiavl snapshot is taken, default to 1000.snapshot-interval = 1000# CacheSize defines the size of the cache for each memiavl store, default to 1000.cache-size = 1000
+[memiavl]
+
+# Enable defines if the memiavl should be enabled.
+enable = false
+
+# ZeroCopy defines if the memiavl should return slices pointing to mmap-ed buffers directly (zero-copy),
+# the zero-copied slices must not be retained beyond current block's execution.
+zero-copy = false
+
+# AsyncCommitBuffer defines the size of asynchronous commit queue, this greatly improve block catching-up
+# performance, -1 means synchronous commit.
+async-commit-buffer = 0
+
+# SnapshotKeepRecent defines what many old snapshots (excluding the latest one) to keep after new snapshots are taken.
+snapshot-keep-recent = 0
+
+# SnapshotInterval defines the block interval the memiavl snapshot is taken, default to 1000.
+snapshot-interval = 1000
+
+# CacheSize defines the size of the cache for each memiavl store, default to 1000.
+cache-size = 1000
 ```
 
 When starting the node with this configuration,

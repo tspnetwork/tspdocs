@@ -22,11 +22,10 @@ which will create a sensible default configuration for testing purposes:
 $ local_node.sh...
 ```
 
-tip
-
-To
- avoid overwriting any data for a real node used in production, it was 
+{{< callout type="info" >}}
+To avoid overwriting any data for a real node used in production, it was 
 decided to store the automatically generated testing configuration at `~/.tmp-tspd` instead of the default `~/.tspd`.
+{{< /callout >}}
 
 When working with the `local_node.sh` script, it is necessary to extend all `tspd` commands, that target the local test node, with the `--home ~/.tmp-tspd` flag. This is mandatory, because the `home` directory cannot be stored in the `tspd` configuration, which can be seen in the output below. For ease of use, 
 it might be sensible to export this directory path as an environment 
@@ -186,10 +185,9 @@ To run a node with the same key every time: replace `tspd keys add $KEY` in `./l
 ```
 echo "your mnemonic here" | tspd keys add $KEY --recover
 ```
-
-tip
-
+{{< callout type="info" >}}
 TSP currently only supports 24 word mnemonics.
+{{< /callout >}}
 
 You can generate a new key/mnemonic with:
 
@@ -202,8 +200,9 @@ To export your TSP key as an Ethereum private key (for use with [Metamask](https
 ```
 tspd keys unsafe-export-eth-key $KEY
 ```
-
+{{< callout type="info" >}}
 For more about the available key commands, use the `--help` flag
+{{< /callout >}}
 
 ```
 tspd keys -h
@@ -211,20 +210,16 @@ tspd keys -h
 
 ### Keyring backend options
 
-The instructions above include commands to use `test` as the `keyring-backend`. This is an unsecured
-keyring that doesn't require entering a password and should not be used in production. Otherwise,
-TSP supports using a file or OS keyring backend for key storage. To create and use a file
-stored key instead of defaulting to the OS keyring, add the flag `--keyring-backend file` to any
-relevant command and the password prompt will occur through the command line. This can also be saved
-as a CLI config option with:
+The instructions above include commands to use `test` as the `keyring-backend`. This is an unsecured keyring that doesn't require entering a password and should not be used in production. Otherwise, TSP supports using a file or OS keyring backend for key storage. To create and use a file
+stored key instead of defaulting to the OS keyring, add the flag --keyring-backend file` to any relevant command and the password prompt will occur through the command line. This can also be saved as a CLI config option with:
 
 ```
 tspd config keyring-backend file
 ```
 
-tip
-
+{{< callout type="info" >}}
 For more information about the Keyring and its backend options, click [here](/docs/protocol/concepts/keyring).
+{{< /callout >}}
 
 ### Enable Tracing
 
@@ -241,17 +236,16 @@ tspd start --evm.tracer $TRACER --tracestore $TRACESTORE --pruning=nothing $TRAC
 ## Clearing data from chain
 
 ### Reset Data
-
+1
 Alternatively, you can **reset** the blockchain database, remove the node's address book files, and reset the `priv_validator.json` to the genesis state.
 
-danger
+{{< callout type="warning" >}}
+If you are running a **validator node**, always be careful when doing `tspd unsafe-reset-all`. You should never use this command if you are not switching `chain-id`.
+{{< /callout >}}
 
-If you are running a **validator node**, always be careful when doing `tspd unsafe-reset-all`. You should never use
-this command if you are not switching `chain-id`.
-
-danger
-
+{{< callout type="warning" >}}
 **IMPORTANT**: Make sure that every node has a unique `priv_validator.json`. **Do not** copy the `priv_validator.json` from an old node to multiple new nodes. Running two nodes with the same `priv_validator.json` will cause you to double sign!
+{{< /callout >}}
 
 First, remove the outdated files and reset the data.
 
@@ -259,27 +253,21 @@ First, remove the outdated files and reset the data.
 rm $HOME/.tspd/config/addrbook.json $HOME/.tspd/config/genesis.jsontspd tendermint unsafe-reset-all --home $HOME/.tspd
 ```
 
-Your node is now in a pristine state while keeping the original `priv_validator.json` and `config.toml`.
-If you had any sentry nodes or full nodes setup before, your node will still try to connect to them,
-but may fail if they haven't also been upgraded.
+Your node is now in a pristine state while keeping the original `priv_validator.json` and `config.toml`. If you had any sentry nodes or full nodes setup before, your node will still try to connect to them, but may fail if they haven't also been upgraded.
 
 ### Delete Data
 
-Data for the tspd binary should be stored at ~/.tspd,
-respectively by default. To **delete** the existing binaries and configuration, run:
+Data for the tspd binary should be stored at ~/.tspd, respectively by default. To **delete** the existing binaries and configuration, run:
 
 ```
 rm -rf ~/.tspd
 ```
 
-To clear all data except key storage (if keyring backend chosen) and then you can rerun the full node installation
-commands from above to start the node again.
+To clear all data except key storage (if keyring backend chosen) and then you can rerun the full node installation commands from above to start the node again.
 
 ## Recording Transactions Per Second (TPS)
 
-In order to get a progressive value of the transactions per second, we use Prometheus to return the values.
-The Prometheus exporter runs at address [http://localhost:8877](http://localhost:8877) so please add this
-section to your [Prometheus installation](https://opencensus.io/codelabs/prometheus/#1) config.yaml file like this
+In order to get a progressive value of the transactions per second, we use Prometheus to return the values. The Prometheus exporter runs at address [http://localhost:8877](http://localhost:8877) so please add this section to your [Prometheus installation](https://opencensus.io/codelabs/prometheus/#1) config.yaml file like this
 
 ```
 global:
@@ -312,5 +300,6 @@ rate(tspd_transactions_processed[1m])
 
 which will show the rate of transactions processed.
 
-tip
+{{< callout type="info" >}}
 TSP currently only supports 24 word mnemonics.
+{{< /callout >}}
