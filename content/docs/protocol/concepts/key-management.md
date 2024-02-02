@@ -4,19 +4,11 @@ weight: 6
 draft: false
 ---
 
-A mnemonic phrase, also known as a seed phrase, is a set of words used to recover or restore a cryptocurrency wallet.
-It acts as a backup to access your digital assets in case you lose access to the original wallet. The phrase is
-typically a series of 12-24 words that are generated when you create a wallet, and it should be kept secure and
-private.
+A mnemonic phrase, also known as a seed phrase, is a set of words used to recover or restore a cryptocurrency wallet. It acts as a backup to access your digital assets in case you lose access to the original wallet. The phrase is typically a series of 12-24 words that are generated when you create a wallet, and it should be kept secure and private.
 
-The importance of mnemonic phrases lies in the fact that cryptocurrencies are stored in a decentralized manner,
-meaning that there is no central authority or institution that holds or controls your funds. This means that if
-you lose access to your wallet (e.g. forget your password, lose your device), you will not be able to recover
-your funds without the mnemonic phrase.
+The importance of mnemonic phrases lies in the fact that cryptocurrencies are stored in a decentralized manner, meaning that there is no central authority or institution that holds or controls your funds. This means that if you lose access to your wallet (e.g. forget your password, lose your device), you will not be able to recover your funds without the mnemonic phrase.
 
-Therefore, it is crucial to store your mnemonic phrase in a safe and secure place, such as a physical paper or
-a secure digital file. Additionally, it is recommended to make multiple copies and store them in different
-locations, so that you can access your funds in case of any emergency.
+Therefore, it is crucial to store your mnemonic phrase in a safe and secure place, such as a physical paper or a secure digital file. Additionally, it is recommended to make multiple copies and store them in different locations, so that you can access your funds in case of any emergency.
 
 {{< callout type="info" >}}
 **Mnemonic Phrase vs Private Key** A seed phrase, also known as a recovery phrase or backup phrase, is a sequence of words used to generate a private key. It is typically a set of 12 or 24 words, and it's used to recover or restore access to a cryptocurrency wallet in case the original private key is lost or damaged. A seed phrase can be used to generate multiple private keys, which can be used to access multiple cryptocurrency addresses and balances.
