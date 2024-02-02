@@ -6,4 +6,4 @@ sidebar:
   open: false
 ---
 
-Key TSP Concepts
+Key concepts listed on this section are for understanding how TSP support business and economic actions for TSP dApps' users.

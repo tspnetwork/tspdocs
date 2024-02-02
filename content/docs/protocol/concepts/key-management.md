@@ -18,39 +18,50 @@ Therefore, it is crucial to store your mnemonic phrase in a safe and secure plac
 a secure digital file. Additionally, it is recommended to make multiple copies and store them in different
 locations, so that you can access your funds in case of any emergency.
 
-note
+{{< callout type="info" >}}
+**Mnemonic Phrase vs Private Key** A seed phrase, also known as a recovery phrase or backup phrase, is a sequence of words used to generate a private key. It is typically a set of 12 or 24 words, and it's used to recover or restore access to a cryptocurrency wallet in case the original private key is lost or damaged. A seed phrase can be used to generate multiple private keys, which can be used to access multiple cryptocurrency addresses and balances.
 
-**Mnemonic Phrase vs Private Key** A seed phrase, also known as a recovery phrase or backup phrase, is a sequence of words used to generate a private
-key. It is typically a set of 12 or 24 words, and it's used to recover or restore access to a cryptocurrency wallet
-in case the original private key is lost or damaged. A seed phrase can be used to generate multiple private keys,
-which can be used to access multiple cryptocurrency addresses and balances.
+On the other hand, a private key is a long string of characters that is used to sign transactions and provide access to your cryptocurrency funds. The private key is generated from the seed phrase and is unique to each cryptocurrency address. It is used to create digital signatures for transactions, which ensure that the transaction is legitimate and has been authorized by the rightful owner of the funds.
 
-On the other hand, a private key is a long string of characters that is used to sign transactions and provide access
-to your cryptocurrency funds. The private key is generated from the seed phrase and is unique to each cryptocurrency
-address. It is used to create digital signatures for transactions, which ensure that the transaction is legitimate
-and has been authorized by the rightful owner of the funds.
+In conclusion, the security of your private keys and mnemonic phrase is of utmost importance. If your private keys are compromised, it can put all associated accounts at risk. However, the loss of your mnemonic phrase can have even more severe consequences as it is used to generate multiple private keys. Therefore, it is crucial to take proper measures to safeguard both your private keys and mnemonic phrase to avoid any catastrophic loss.
+{{< /callout >}}
 
-In conclusion, the security of your private keys and mnemonic phrase is of utmost importance. If your private keys
-are compromised, it can put all associated accounts at risk. However, the loss of your mnemonic phrase can have
-even more severe consequences as it is used to generate multiple private keys. Therefore, it is crucial to take
-proper measures to safeguard both your private keys and mnemonic phrase to avoid any catastrophic loss.
+## Mnemonics from the TSP CLI
 
-## Mnemonics from the Evmos CLI
-
-note
-
-Before proceeding with the CLI, please insure you have `evmosd` installed. Installation instruction are located [here](https://docs.evmos.org/protocol/evmos-cli/single-node).
+{{< callout type="info" >}}
+Before proceeding with the CLI, please insure you have `tspd` installed. Installation instruction are located [here](/docs/protocol/tsp-cli/single-node).
+{{< /callout >}}
 
 When you create a new key, you'll receive a mnemonic phrase that can be used to restore that key. Backup the mnemonic phrase:
 
 ```
-evmosd keys add dev0{  "name": "dev0",  "type": "local",  "address": "evmos1n253dl2tgyhxjm592p580c38r4dn8023ctv28d",  "pubkey": '{"@type":"/ethermint.crypto.v1.ethsecp256k1.PubKey","key":"ArJhve4v5HkLm+F7ViASU/rAGx7YrwU4+XKV2MNJt+Cq"}',  "mnemonic": ""}**Important** write this mnemonic phrase in a safe place.It is the only way to recover your account if you ever forget your password.# <24 word mnemonic phrase>
+tspd keys add dev0
+{
+  "name": "dev0",
+  "type": "local",
+  "address": "tsp1n253dl2tgyhxjm592p580c38r4dn8023ctv28d",
+  "pubkey": '{"@type":"/ethermint.crypto.v1.ethsecp256k1.PubKey","key":"ArJhve4v5HkLm+F7ViASU/rAGx7YrwU4+XKV2MNJt+Cq"}',
+  "mnemonic": ""
+}
+
+**Important** write this mnemonic phrase in a safe place.
+It is the only way to recover your account if you ever forget your password.
+
+# <24 word mnemonic phrase>
 ```
 
 To restore the key:
 
 ```
-$ evmosd keys add dev0-restored --recover> Enter your bip39 mnemonicbanner genuine height east ghost oak toward reflect asset marble else explain foster car nest make van divide twice culture announce shuffle net peanut{  "name": "dev0-restored",  "type": "local",  "address": "evmos1n253dl2tgyhxjm592p580c38r4dn8023ctv28d",  "pubkey": '{"@type":"/ethermint.crypto.v1.ethsecp256k1.PubKey","key":"ArJhve4v5HkLm+F7ViASU/rAGx7YrwU4+XKV2MNJt+Cq"}'}
+$ tspd keys add dev0-restored --recover
+> Enter your bip39 mnemonic
+banner genuine height east ghost oak toward reflect asset marble else explain foster car nest make van divide twice culture announce shuffle net peanut
+{
+  "name": "dev0-restored",
+  "type": "local",
+  "address": "tsp1n253dl2tgyhxjm592p580c38r4dn8023ctv28d",
+  "pubkey": '{"@type":"/ethermint.crypto.v1.ethsecp256k1.PubKey","key":"ArJhve4v5HkLm+F7ViASU/rAGx7YrwU4+XKV2MNJt+Cq"}'
+}
 ```
 
 ## Export Key
@@ -60,19 +71,39 @@ $ evmosd keys add dev0-restored --recover> Enter your bip39 mnemonicbanner genui
 To backup this type of key without the mnemonic phrase, do the following:
 
 ```
-evmosd keys export dev0Enter passphrase to decrypt your key:Enter passphrase to encrypt the exported key:-----BEGIN TENDERMINT PRIVATE KEY-----kdf: bcryptsalt: 14559BB13D881A86E0F4D3872B8B2C82type: secp256k1# <Tendermint private key>-----END TENDERMINT PRIVATE KEY-----$ echo "\-----BEGIN TENDERMINT PRIVATE KEY-----kdf: bcryptsalt: 14559BB13D881A86E0F4D3872B8B2C82type: secp256k1# <Tendermint private key>-----END TENDERMINT PRIVATE KEY-----" > dev0.export
+tspd keys export dev0
+Enter passphrase to decrypt your key:
+Enter passphrase to encrypt the exported key:
+-----BEGIN TENDERMINT PRIVATE KEY-----
+kdf: bcrypt
+salt: 14559BB13D881A86E0F4D3872B8B2C82
+type: secp256k1
+
+# <Tendermint private key>
+-----END TENDERMINT PRIVATE KEY-----
+
+$ echo "\
+-----BEGIN TENDERMINT PRIVATE KEY-----
+kdf: bcrypt
+salt: 14559BB13D881A86E0F4D3872B8B2C82
+type: secp256k1
+
+# <Tendermint private key>
+-----END TENDERMINT PRIVATE KEY-----" > dev0.export
 ```
 
 ### Ethereum-Formatted Private Keys
 
-tip
-
+{{< callout type="info" >}}
 **Note**: These types of keys are MetaMask-compatible.
+{{< /callout >}}
 
 To backup this type of key without the mnemonic phrase, do the following:
 
 ```
-evmosd keys unsafe-export-eth-key dev0 > dev0.export**WARNING** this is an unsafe way to export your unencrypted private key, are you sure? [y/N]: yEnter keyring passphrase:
+tspd keys unsafe-export-eth-key dev0 > dev0.export
+**WARNING** this is an unsafe way to export your unencrypted private key, are you sure? [y/N]: y
+Enter keyring passphrase:
 ```
 
 ## Import Key
@@ -80,13 +111,15 @@ evmosd keys unsafe-export-eth-key dev0 > dev0.export**WARNING** this is an unsaf
 ### Tendermint-Formatted Private Keys
 
 ```
-$ evmosd keys import dev0-imported ./dev0.exportEnter passphrase to decrypt your key:
+$ tspd keys import dev0-imported ./dev0.export
+Enter passphrase to decrypt your key:
 ```
 
 ### Ethereum-Formatted Private Keys
 
 ```
-$ evmosd keys unsafe-import-eth-key dev0-imported ./dev0.exportEnter passphrase to encrypt your key:
+$ tspd keys unsafe-import-eth-key dev0-imported ./dev0.export
+Enter passphrase to encrypt your key:
 ```
 
 ### Verification
@@ -94,5 +127,25 @@ $ evmosd keys unsafe-import-eth-key dev0-imported ./dev0.exportEnter passphrase 
 Verify that your key has been restored using the following command:
 
 ```
-$ evmosd keys list[  {    "name": "dev0-imported",    "type": "local",    "address": "evmos1n253dl2tgyhxjm592p580c38r4dn8023ctv28d",    "pubkey": '{"@type":"/ethermint.crypto.v1.ethsecp256k1.PubKey","key":"ArJhve4v5HkLm+F7ViASU/rAGx7YrwU4+XKV2MNJt+Cq"}'  },  {    "name": "dev0-restored",    "type": "local",    "address": "evmos1n253dl2tgyhxjm592p580c38r4dn8023ctv28d",    "pubkey": '{"@type":"/ethermint.crypto.v1.ethsecp256k1.PubKey","key":"ArJhve4v5HkLm+F7ViASU/rAGx7YrwU4+XKV2MNJt+Cq"}'  },  {    "name": "dev0",    "type": "local",    "address": "evmos1n253dl2tgyhxjm592p580c38r4dn8023ctv28d",    "pubkey": '{"@type":"/ethermint.crypto.v1.ethsecp256k1.PubKey","key":"ArJhve4v5HkLm+F7ViASU/rAGx7YrwU4+XKV2MNJt+Cq"}'  }]
+$ tspd keys list
+[
+  {
+    "name": "dev0-imported",
+    "type": "local",
+    "address": "tsp1n253dl2tgyhxjm592p580c38r4dn8023ctv28d",
+    "pubkey": '{"@type":"/ethermint.crypto.v1.ethsecp256k1.PubKey","key":"ArJhve4v5HkLm+F7ViASU/rAGx7YrwU4+XKV2MNJt+Cq"}'
+  },
+  {
+    "name": "dev0-restored",
+    "type": "local",
+    "address": "tsp1n253dl2tgyhxjm592p580c38r4dn8023ctv28d",
+    "pubkey": '{"@type":"/ethermint.crypto.v1.ethsecp256k1.PubKey","key":"ArJhve4v5HkLm+F7ViASU/rAGx7YrwU4+XKV2MNJt+Cq"}'
+  },
+  {
+    "name": "dev0",
+    "type": "local",
+    "address": "tsp1n253dl2tgyhxjm592p580c38r4dn8023ctv28d",
+    "pubkey": '{"@type":"/ethermint.crypto.v1.ethsecp256k1.PubKey","key":"ArJhve4v5HkLm+F7ViASU/rAGx7YrwU4+XKV2MNJt+Cq"}'
+  }
+]
 ```
