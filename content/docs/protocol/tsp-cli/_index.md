@@ -39,7 +39,7 @@ you can build and install the `TSPd` binaries from source or using Docker.
 
 ### Download the binaries
 
-- Go to the [releases section of the repository](https://github.com/TSP/TSP/releases)
+- Go to the [releases section of the repository](https://github.com/tspnetwork/tspchain/releases)
 - Choose the desired release or pre-release you want to install on your machine
 - Select and download from the `Assets` dropdown the corresponding tar or zip file for your OS
 - Extract the files. The `TSPd` binaries is located in the `bin` directory of the extrated files
@@ -54,17 +54,17 @@ tspd version
 ### Build From Source
 
 Clone and build the TSP from source using `git`. The `<tag>` refers to a release tag on Github. Check the latest TSP
-version on the [releases section of the repository](https://github.com/TSP/TSP/releases):
+version on the [releases section of the repository](https://github.com/tspnetwork/tspchain/releases):
 
 ```
-git clone https://github.com/evmos/evmos.git
-cd evmos
+git clone https://github.com/tspnetwork/tspchain.git
+cd tspchain
 git fetch
 git checkout <tag>
 make install
 ```
 
-After installation is done, check that the TSPd binaries have been successfully installed:
+After installation is done, check that the `tspd` binaries have been successfully installed:
 
 ```
 tspd version
@@ -72,7 +72,7 @@ tspd version
 
 info
 
-If the `TSPd: command not found` error message is returned, confirm that you have configured [Go](https://docs.TSP.org/protocol/TSP-cli#go) correctly.
+If the `TSPd: command not found` error message is returned, confirm that you have configured [Go](https://docs.tsp.network/docs/protocol/tsp-cli#go) correctly.
 
 ### Docker
 
@@ -80,7 +80,7 @@ When it comes to using Docker with TSP, there are two options available:
 Build a binary of the TSP daemon inside a dockerized build environment
 or build a Docker image, that can be used to spin up individual containers running the TSP binary.
 For information on how to achieve this,
-proceed to the dedicated page on [working with Docker](https://docs.TSP.org/protocol/TSP-cli/docker-build).
+proceed to the dedicated page on [working with Docker](https://docs.tsp.network/docs/protocol/tsp-cli/docker-build).
 
 ## Run an TSP node
 
@@ -93,7 +93,7 @@ Run the local node by executing the `local_node.sh` script in the base directory
 ./local_node.sh
 ```
 
-The script stores the node configuration including the local default endpoints under `~/.tmp-TSPd/config/config.toml`.
+The script stores the node configuration including the local default endpoints under `~/.tmp-tspd/config/config.toml`.
 If you have previously run the script, the script allows you to overwrite the existing configuration and start a new
 local node.
 
@@ -131,7 +131,7 @@ keys use:
 
 ```
 tspd keys list \
---home ~/.tmp-evmosd \
+--home ~/.tmp-tspd \
 --keyring-backend test
 
 # Example Output:
@@ -194,7 +194,7 @@ You can set your node configuration to send requests to a different network by c
 
 ```
 tspd config node [tendermint-rpc-endpoint] \
---home ~/.tmp-evmosd
+--home ~/.tmp-tspd
 ```
 
 Learn about more node configurations [here](https://docs.TSP.org/protocol/TSP-cli/configuration).

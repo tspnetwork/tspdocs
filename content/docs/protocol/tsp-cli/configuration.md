@@ -2,33 +2,38 @@
 title: Configuration
 linkTitle: Configuration
 weight: 1
-sidebar:
-  open: false
 ---
 
 The following page will guide you through the configuration of a node and a client.
 The node is used to run the blockchain network, produce blocks and validate transactions.
 The client is used as a gateway to interact with the blockchain network by sending transactions and querying the state.
-Additionally we walk through [running the JSON-RPC server](https://docs.evmos.org/protocol/evmos-cli/configuration#running-the-json-rpc-server).
+Additionally we walk through [running the JSON-RPC server](/docs/protocol/tsp-cli/configuration#running-the-json-rpc-server).
 
 These configurations can impact the performance, security, and functionality of your node.
 Thus, understanding and correctly configuring your node and client is essential.
 
 ## Config and data directory
 
-By default, your config and data are stored in the folder located at the `~/.evmosd` directory.
+By default, your config and data are stored in the folder located at the `~/.tspd` directory.
 You can easily change the default directory by using the `--home` flag. It is important to note that
 you can have multiple home directories that each represent a different blockchain.
 
 ```
-.                                   # ~/.evmosd  ├── data/                           # Contains the databases used by the node.  └── config/      ├── app.toml                   # Application-related configuration file.      ├── config.toml                # Tendermint-related configuration file.      ├── genesis.json               # The genesis file.      ├── node_key.json              # Private key to use for node authentication in the p2p protocol.      └── priv_validator_key.json    # Private key to use as a validator in the consensus protocol.
+.                                   # ~/.tspd
+  ├── data/                           # Contains the databases used by the node.
+  └── config/
+      ├── app.toml                   # Application-related configuration file.
+      ├── config.toml                # Tendermint-related configuration file.
+      ├── genesis.json               # The genesis file.
+      ├── node_key.json              # Private key to use for node authentication in the p2p protocol.
+      └── priv_validator_key.json    # Private key to use as a validator in the consensus protocol.
 ```
 
-To specify the `evmosd` config and data storage directory; you can update it using the global flag `--home <directory>`.
+To specify the `tspd` config and data storage directory; you can update it using the global flag `--home <directory>`.
 
 ## Node Configuration
 
-The Cosmos SDK automatically generates two configuration files inside `~/.evmosd/config`:
+The Cosmos SDK automatically generates two configuration files inside `~/.tspd/config`:
 
 - `config.toml`: used to configure the Tendermint, learn more on [Tendermint's documentation](https://docs.tendermint.com/v0.34/tendermint-core/configuration.html),
 - `app.toml`:
@@ -47,13 +52,13 @@ prices.
 If it's empty, make sure to edit the field with some value, for example `10token`, or else the node will halt on startup.
 
 ```
- # The minimum gas prices a validator is willing to accept for processing a # transaction. A transaction's fees must meet the minimum of any denomination # specified in this config (e.g. 0.25token1;0.0001token2). minimum-gas-prices = "0aevmos"
+ # The minimum gas prices a validator is willing to accept for processing a # transaction. A transaction's fees must meet the minimum of any denomination # specified in this config (e.g. 0.25token1;0.0001token2). minimum-gas-prices = "tsp"
 ```
 
 ### Pruning of State
 
 There are four strategies for pruning state. These strategies apply only to state and do not apply to block storage.
-To set pruning, adjust the `pruning` parameter in the `~/.evmosd/config/app.toml` file.
+To set pruning, adjust the `pruning` parameter in the `~/.tspd/config/app.toml` file.
 The following pruning state settings are available:
 
 - `everything`: Prune all saved states other than the current state.
@@ -63,7 +68,7 @@ The following pruning state settings are available:
 
 By default, every node is in `default` mode which is the recommended setting for most environments.
 If you would like to change your nodes pruning strategy then you must do
- so when the node is initialized. Passing a flag when starting `evmos` will always override settings in the `app.toml` file, if you would like to change your node to the `everything` mode then you can pass the `--pruning everything` flag when you call `evmosd start`.
+ so when the node is initialized. Passing a flag when starting `tsp` will always override settings in the `app.toml` file, if you would like to change your node to the `everything` mode then you can pass the `--pruning everything` flag when you call `tspd start`.
 
 danger
 
@@ -72,10 +77,10 @@ When you are pruning state you will not be able to query the heights that are no
 
 ## Client Configuration
 
-We can view the default client config setting by using `evmosd config` command:
+We can view the default client config setting by using `tspd config` command:
 
 ```
-evmosd config{ "chain-id": "", "keyring-backend": "os", "output": "text", "node": "tcp://localhost:26657", "broadcast-mode": "sync"}
+tspd config{ "chain-id": "", "keyring-backend": "os", "output": "text", "node": "tcp://localhost:26657", "broadcast-mode": "sync"}
 ```
 
 We
@@ -83,46 +88,50 @@ We
  users to set the configuration beforehand all at once, so it would be 
 ready with the same config afterward.
 
-For example, the chain identifier can be changed to `evmos_9000-4` from a blank name by using:
+For example, the chain identifier can be changed to `tsp_9000-4` from a blank name by using:
 
 ```
-evmosd config "chain-id" evmos_9000-4evmosd config{ "chain-id": "evmos_9000-4", "keyring-backend": "os", "output": "text", "node": "tcp://localhost:26657", "broadcast-mode": "sync"}
+tspd config
+{
+ "chain-id": "",
+ "keyring-backend": "os",
+ "output": "text",
+ "node": "tcp://localhost:26657",
+ "broadcast-mode": "sync"
+}
 ```
 
 Other values can be changed in the same way.
 
-Alternatively, we can directly make the changes to the config values in one place at client.toml. It is under the path of `.evmos/config/client.toml` in the folder where we installed evmos:
+Alternatively, we can directly make the changes to the config values in one place at client.toml. It is under the path of `.tsp/config/client.toml` in the folder where we installed tsp:
 
 ```
-############################################################################### Client Configuration ################################################################################ The network chain IDchain-id = "evmos_9000-4"# The keyring's backend, where the keys are stored (os|file|kwallet|pass|test|memory)keyring-backend = "os"# CLI output format (text|json)output = "number"# <host>:<port> to Tendermint RPC interface for this chainnode = "tcp://localhost:26657"# Transaction broadcasting mode (sync|async|block)broadcast-mode = "sync"
+############################################################################### Client Configuration ################################################################################ The network chain IDchain-id = "tsp_9000-4"# The keyring's backend, where the keys are stored (os|file|kwallet|pass|test|memory)keyring-backend = "os"# CLI output format (text|json)output = "number"# <host>:<port> to Tendermint RPC interface for this chainnode = "tcp://localhost:26657"# Transaction broadcasting mode (sync|async|block)broadcast-mode = "sync"
 ```
 
-After the necessary changes are made in the `client.toml`, then save. For example, if we directly change the chain-id from evmos_9000-4 to `evmostest_9000-4`, and output to number, it would change instantly as shown below.
+After the necessary changes are made in the `client.toml`, then save. For example, if we directly change the chain-id from tsp_9000-4 to `tsptest_9000-4`, and output to number, it would change instantly as shown below.
 
 ```
-evmosd config{ "chain-id": "evmostest_9000-4", "keyring-backend": "os", "output": "number", "node": "tcp://localhost:26657", "broadcast-mode": "sync"}
+tspd config{ "chain-id": "tsptest_9000-4", "keyring-backend": "os", "output": "number", "node": "tcp://localhost:26657", "broadcast-mode": "sync"}
 ```
 
 ## Running the JSON-RPC Server
 
 This section walks through the steps to enable the JSON-RPC server.
-JSON-RPC is provided on multiple transports. Evmos supports JSON-RPC over HTTP and WebSocket.
-In terms of requirements we recommend a server with minimum 8-core CPU and 64gb of RAM.
-You must have ports 8545 and 8546 open on your firewall.
+JSON-RPC is provided on multiple transports. TSP supports JSON-RPC over HTTP and WebSocket. In terms of requirements we recommend a server with minimum 8-core CPU and 64gb of RAM. You must have ports 8545 and 8546 open on your firewall.
 
 tip
-
 **Important**:
  You cannot use all JSON RPC methods unless your node stores the entire 
 copy of the blockchain locally. Do you need archives/snapshots of our 
-networks? Go to [this section](https://docs.evmos.org/develop/api/snapshots-archives).
+networks? Go to [this section](/docs/develop/api/snapshots-archives).
 
 ### Enable Server
 
 To enable RPC server use the following flag (set to true by default).
 
 ```
-evmosd start --json-rpc.enable
+tspd start --json-rpc.enable
 ```
 
 ### Defining Namespaces
