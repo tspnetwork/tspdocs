@@ -8,11 +8,11 @@ Create, import, export and delete keys using the CLI keyring.
 
 The keyring holds the private/public keypairs used to interact with the node. For instance, a validator key needs to be
 set up before running the node, so that blocks can be correctly signed. The private key can be stored in different
-locations, called ["backends"](https://docs.evmos.org/protocol/concepts/keyring#keyring-backends), such as a file or the operating system's own key storage.
+locations, called ["backends"](/docs/protocol/concepts/keyring#keyring-backends), such as a file or the operating system's own key storage.
 
 tip
 
-In case, you need a refresher on private key and key management, please reference our [Key Management](https://docs.evmos.org/protocol/concepts/key-management).
+In case, you need a refresher on private key and key management, please reference our [Key Management](/docs/protocol/concepts/key-management).
 
 ## Add keys
 
@@ -20,18 +20,18 @@ You can use the following commands for help with the `keys` command and for more
 respectively:
 
 ```
-evmosd keys
+tspd keys
 ```
 
 ```
-evmosd keys [command] --help
+tspd keys [command] --help
 ```
 
 To create a new key in the keyring, run the `add` subcommand with a `<key_name>` argument. You will have to provide a password
 for the newly generated key. This key will be used in the next section.
 
 ```
-evmosd keys add dev0# Put the generated address in a variable for later use.MY_VALIDATOR_ADDRESS=$(evmosd keys show dev0 -a)
+tspd keys add dev0# Put the generated address in a variable for later use.MY_VALIDATOR_ADDRESS=$(tspd keys show dev0 -a)
 ```
 
 This command generates a new 24-word mnemonic phrase, persists it to the relevant backend, and outputs information about
@@ -47,7 +47,7 @@ tip
 
 danger
 
-**NOTE**: Cosmos `secp256k1` keys are not supported on Evmos due to compatibility issues with Ethereum transactions.
+**NOTE**: Cosmos `secp256k1` keys are not supported on TSP due to compatibility issues with Ethereum transactions.
 
 ## Keyring Backends
 
@@ -85,12 +85,16 @@ to execute commands using the `file` option you may want to utilize the followin
 for multiple prompts:
 
 ```
-# assuming that KEYPASSWD is set in the environmentyes $KEYPASSWD | evmosd keys add meyes $KEYPASSWD | evmosd keys show me# start evmosd with keyring-backend flagevmosd --keyring-backend=file start
+# assuming that KEYPASSWD is set in the environment
+yes $KEYPASSWD | tspd keys add me
+yes $KEYPASSWD | tspd keys show me
+# start tspd with keyring-backend flag
+tspd --keyring-backend=file start
 ```
 
-tip
-
+{{< callout type="info" >}}
 The first time you add a key to an empty keyring, you will be prompted to type the password twice.
+{{< /callout >}}
 
 ### Password Store
 
@@ -100,10 +104,9 @@ within app-specific directories. `pass` is available for the most popular UNIX
 operating systems as well as GNU/Linux distributions. Please refer to its manual page for
 information on how to download and install it.
 
-tip
-
-**`pass`** uses [GnuPG](https://gnupg.org/) for encryption. `gpg` automatically invokes the `gpg-agent` daemon upon execution, which handles the caching of GnuPG credentials. Please refer to `gpg-agent` man page for more information on how to configure cache parameters such as credentials TTL and
-passphrase expiration.
+{{< callout type="info" >}}
+**`pass`** uses [GnuPG](https://gnupg.org/) for encryption. `gpg` automatically invokes the `gpg-agent` daemon upon execution, which handles the caching of GnuPG credentials. Please refer to `gpg-agent` man page for more information on how to configure cache parameters such as credentials TTL and passphrase expiration.
+{{< /callout >}}
 
 The password store must be set up prior to first use:
 
