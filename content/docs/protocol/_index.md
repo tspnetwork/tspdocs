@@ -4,7 +4,7 @@ weight: 4
 prev: /docs/tsp-bot-system
 next: /docs/develop/
 sidebar:
-  open: true
+  open: false
 ---
 
 {{< cards >}}
