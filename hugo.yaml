@@ -2,6 +2,10 @@
 title: TSP Network Documentation
 baseURL: "/"
 
+services:
+  googleAnalytics:
+    ID: G-RS3QKM1S2D
+
 # import hextra as module
 module:
   imports:
